@@ -1,7 +1,7 @@
 import React from 'react';
 import './LoginSignup.css';
 
-const LoginSignup = () => {
+function LoginSignup() {
   return (
     <div className="section">
       <div className="container">
@@ -12,7 +12,12 @@ const LoginSignup = () => {
                 <span>Log In </span>
                 <span>Sign Up</span>
               </h6>
-              <input className="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+              <input
+                className="checkbox"
+                type="checkbox"
+                id="reg-log"
+                name="reg-log"
+              />
               <label htmlFor="reg-log"></label>
               <div className="card-3d-wrap mx-auto">
                 <div className="card-3d-wrapper">
@@ -42,7 +47,9 @@ const LoginSignup = () => {
                           />
                           <i className="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <a href="#" className="btn mt-4">submit</a>
+                        <a href="#" className="btn mt-4">
+                          Submit
+                        </a>
                         <p className="mb-0 mt-4 text-center">
                           <a href="#0" className="link">
                             Forgot your password?
@@ -88,7 +95,9 @@ const LoginSignup = () => {
                           />
                           <i className="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <a href="#" className="btn mt-4">submit</a>
+                        <a href="#" className="btn mt-4">
+                          Submit
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -100,6 +109,6 @@ const LoginSignup = () => {
       </div>
     </div>
   );
-};
+}
 
 export default LoginSignup;
