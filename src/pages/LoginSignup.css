@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #c4c3ca;
+  background-color: #1f2029;
+  overflow-x: hidden;
+}
+
+a {
+  cursor: pointer;
+  transition: all 200ms linear;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.link {
+  color: #c4c3ca;
+  position: relative;
+  transition: all 300ms ease-in-out;
+  font-size: 13px;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #ffeba7;
+  transition: width 300ms ease-in-out;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+h4 {
+  font-weight: 600;
+  text-align:center;
+}
+
+h6.mb-0.pb-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+h6 span {
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  color: #c4c3ca;
+  transition: all 200ms linear;
+}
+
+h6 span:hover {
+  color: #ffeba7;
+}
+
+.section {
+  position: relative;
+  width: 100%;
+  display: block;
+  padding: 20px 0;
+}
+
+.full-height {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.checkbox:checked + label,
+.checkbox:not(:checked) + label {
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0;
+  margin: 20px auto;
+  cursor: pointer;
+  background-color: #ffeba7;
+}
+
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before {
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #ffeba7;
+  background-color: #102770;
+  font-family: 'unicons';
+  content: '\eb4f';
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.checkbox:checked + label:before {
+  transform: translateX(44px) rotate(-270deg);
+}
+
+.card-3d-wrap {
+  position: relative;
+  width: 440px;
+  max-width: 90%;
+  height: 600px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  margin-top: 40px;
+}
+
+.card-3d-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: all 800ms ease-out;
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  background-color: #2a2b38;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 300%;
+  position: absolute;
+  border-radius: 6px;
+  left: 0;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: 30px 15px;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+  transform: rotateY(180deg);
+}
+
+.center-wrap {
+  position: absolute;
+  width: 100%;
+  padding: 0 25px;
+  top: 50%;
+  left: 0;
+  transform: translate3d(0, -50%, 35px) perspective(100px);
+  z-index: 20;
+  display: block;
+  box-sizing: border-box;
+}
+
+.form-group {
+  position: relative;
+  display: block;
+  margin: 0 0 15px 0;
+  width: 100%;
+}
+
+.form-style {
+  padding: 12px 15px 12px 40px;
+  height: 42px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #c4c3ca;
+  background-color: #1f2029;
+  border: none;
+  transition: all 200ms linear;
+  box-sizing: border-box;
+}
+
+.form-style:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px 0 rgba(21, 21, 21, 0.3);
+  background-color: #2a2b38;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #ffeba7;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.form-style:focus + .input-icon {
+  color: #102770;
+  transform: translateY(-50%) scale(1.2);
+}
+
+.form-group input:-ms-input-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.form-group input::-moz-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.form-group input:-moz-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.form-group input::-webkit-input-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.form-group input:focus:-ms-input-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.form-group input:focus::-moz-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.form-group input:focus:-moz-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.form-group input:focus::-webkit-input-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.form-style {
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.form-style:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(16, 39, 112, 0.2);
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: #ffeba7;
+  color: #102770;
+  border-radius: 4px;
+  height: 42px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0 20px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin: 15px auto 0;
+  width: 100%;
+  max-width: 160px;
+}
+
+.btn span {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.btn:hover span {
+  color: #ffeba7;
+  transform: scale(1.1);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #102770;
+  transition: all 0.3s ease;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0);
+  transition: transform 0.3s ease-out;
+  border-radius: 8px;
+}
+
+.btn:active::after {
+  transform: scale(2);
+  opacity: 0;
+}
+
+h4.mb-4.pb-3 {
+  color: #ffeba7;
+  margin-bottom: 20px !important;
+  padding-bottom: 10px !important;
+}
+
+@media screen and (max-width: 480px) {
+  .card-3d-wrap {
+    width: 100%;
+    height: 620px;
+    margin-top: 20px;
+  }
+
+  .center-wrap {
+    padding: 0 15px;
+  }
+
+  .card-front,
+  .card-back {
+    padding: 20px 10px;
+  }
+
+  .form-style {
+    font-size: 14px;
+    height: 40px;
+    padding: 10px 15px 10px 35px;
+  }
+
+  .input-icon {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    left: 8px;
+  }
+
+  h6.mb-0.pb-3 {
+    gap: 15px;
+  }
+
+  h6 span {
+    font-size: 13px;
+    padding: 0 8px;
+  }
+
+  .btn {
+    max-width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 12px;
+  }
+
+  h4.mb-4.pb-3 {
+    font-size: 18px;
+    margin-bottom: 15px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .form-group.mt-2 {
+    margin-top: 10px !important;
+  }
+
+  .link {
+    font-size: 12px;
+    margin-top: 12px;
+  }
+
+  .input-icon {
+    font-size: 18px;
+  }
+  
+  .btn:hover span {
+    transform: scale(1.05);
+  }
+  
+  .form-style:focus {
+    transform: translateY(-2px);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .card-3d-wrap {
+    height: 640px;
+  }
+
+  .center-wrap {
+    padding: 0 10px;
+  }
+
+  .form-style {
+    font-size: 13px;
+  }
+
+  h6 span {
+    font-size: 12px;
+    padding: 0 5px;
+  }
+}
+
+.section.text-center {
+  padding: 0 0 10px 0;
+}
+
+h4.mb-4.pb-3 {
+  margin-bottom: 20px !important;
+  padding-bottom: 10px !important;
+}
+
+.form-group.mt-2 {
+  margin-top: 12px !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Sliding link animation */
+.sliding-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.sliding-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ffeba7;
+  transition: all 0.3s ease;
+}
+
+.sliding-link:hover::after {
+  width: 100%;
+}
+
+/* Input placeholder animation */
+.form-style::placeholder {
+  transition: all 0.3s ease;
+}
+
+.form-style:focus::placeholder {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+/* Error state animation */
+.form-style.error {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+  20%, 80% {
+    transform: translateX(2px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-4px);
+  }
+  40%, 60% {
+    transform: translateX(4px);
+  }
+}
+
+/* Success button animation */
+.btn.success {
+  animation: success 0.5s ease forwards;
+}
+
+@keyframes success {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Card hover effect */
+.card-3d-wrap:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+/* Checkbox animation enhancement */
+.checkbox:checked + label:before {
+  transform: translateX(44px) rotate(-270deg);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
