@@ -1,9 +1,17 @@
-import React from 'react';
-import './LoginSignup.css';
-import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
-import { FaKey, FaArrowRight, FaArrowUp } from 'react-icons/fa';
+import React from "react";
+import "./LoginSignup.css";
+import { MdEmail, MdLock, MdPerson } from "react-icons/md";
+import { FaKey, FaArrowRight, FaArrowUp } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function LoginSignup() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/Dashboard");
+  };
+
   return (
     <div className="section">
       <div className="container">
@@ -12,9 +20,9 @@ function LoginSignup() {
             <div className="section pb-5 pt-5 pt-sm-2 text-center">
               <h6 className="mb-0 pb-3">
                 <span className="sliding-link">Log In</span>
-                  <span className="switch-arrow">
-                    <FaArrowUp />
-                  </span>
+                <span className="switch-arrow">
+                  <FaArrowUp />
+                </span>
                 <span className="sliding-link">Sign Up</span>
               </h6>
               <input
@@ -30,7 +38,7 @@ function LoginSignup() {
                     <div className="center-wrap">
                       <div className="section text-center">
                         <h4 className="mb-4 pb-3">Log In</h4>
-                        <form onSubmit={(e) => e.preventDefault()}>
+                        <form onSubmit={handleSubmit}>
                           <div className="form-group">
                             <input
                               type="email"
@@ -73,7 +81,7 @@ function LoginSignup() {
                     <div className="center-wrap">
                       <div className="section text-center">
                         <h4 className="mb-4 pb-3">Sign Up</h4>
-                        <form onSubmit={(e) => e.preventDefault()}>
+                        <form onSubmit={handleSubmit}>
                           <div className="form-group">
                             <input
                               type="text"
