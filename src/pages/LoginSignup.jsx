@@ -1,7 +1,7 @@
 import React from 'react';
 import './LoginSignup.css';
 import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
-import { FaKey } from 'react-icons/fa';
+import { FaKey, FaArrowRight, FaArrowUp } from 'react-icons/fa';
 
 function LoginSignup() {
   return (
@@ -11,7 +11,10 @@ function LoginSignup() {
           <div className="col-12 text-center align-self-center py-5">
             <div className="section pb-5 pt-5 pt-sm-2 text-center">
               <h6 className="mb-0 pb-3">
-                <span className="sliding-link">Log In </span>
+                <span className="sliding-link">Log In</span>
+                  <span className="switch-arrow">
+                    <FaArrowUp />
+                  </span>
                 <span className="sliding-link">Sign Up</span>
               </h6>
               <input
