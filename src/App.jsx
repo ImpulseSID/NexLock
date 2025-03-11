@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginSignup from "./pages/LoginSignup";
 import Dashboard from "./pages/Dashboard";
+import Generate from "./pages/Generate";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginSignup />} />
         <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Generate" element={<Generate />} />
       </Routes>
     </BrowserRouter>
   );
