@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Generate.css";
+import styles from "./Generate.module.css";
 
 export default function Generate() {
   const [password, setPassword] = useState("CLICK GENERATE");
@@ -100,8 +100,12 @@ export default function Generate() {
     setGenerated(true);
 
     // Reset copy info messages (if needed).
-    const copyInfoEl = document.querySelector(".result__info.right");
-    const copiedInfoEl = document.querySelector(".result__info.left");
+    const copyInfoEl =
+      document.querySelector(`.${styles["result__info"]}.right`) ||
+      document.querySelector(".result__info.right");
+    const copiedInfoEl =
+      document.querySelector(`.${styles["result__info"]}.left`) ||
+      document.querySelector(".result__info.left");
     if (copyInfoEl && copiedInfoEl) {
       copyInfoEl.style.transform = "translateY(0%)";
       copyInfoEl.style.opacity = "0.75";
@@ -114,8 +118,12 @@ export default function Generate() {
   function handleCopy() {
     if (!password || password === "CLICK GENERATE") return;
     navigator.clipboard.writeText(password).then(() => {
-      const copyInfoEl = document.querySelector(".result__info.right");
-      const copiedInfoEl = document.querySelector(".result__info.left");
+      const copyInfoEl =
+        document.querySelector(`.${styles["result__info"]}.right`) ||
+        document.querySelector(".result__info.right");
+      const copiedInfoEl =
+        document.querySelector(`.${styles["result__info"]}.left`) ||
+        document.querySelector(".result__info.left");
       if (copyInfoEl && copiedInfoEl) {
         copyInfoEl.style.transform = "translateY(200%)";
         copyInfoEl.style.opacity = "0";
@@ -152,17 +160,21 @@ export default function Generate() {
   ].filter(Boolean).length;
 
   return (
-    <div className="container">
-      <h2 className="title">Password Generator</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Password Generator</h2>
       <div
-        className="result"
+        className={styles.result}
         ref={resultContainerRef}
         onMouseMove={handleMouseMove}
       >
-        <div className="result__title field-title">Generated Password</div>
-        <div className="result__info right">click to copy</div>
-        <div className="result__info left">copied</div>
-        <div className="result__viewbox" id="result">
+        <div className={`${styles["result__title"]} ${styles["field-title"]}`}>
+          Generated Password
+        </div>
+        <div className={`${styles["result__info"]} ${styles.right}`}>
+          click to copy
+        </div>
+        <div className={`${styles["result__info"]} ${styles.left}`}>copied</div>
+        <div className={styles["result__viewbox"]} id="result">
           {password}
         </div>
         <button
@@ -175,9 +187,13 @@ export default function Generate() {
         </button>
       </div>
 
-      <div className="length range__slider" data-min="4" data-max="32">
+      <div
+        className={`${styles.length} ${styles["range__slider"]}`}
+        data-min="4"
+        data-max="32"
+      >
         <div
-          className="length__title field-title"
+          className={`${styles["length__title"]} ${styles["field-title"]}`}
           ref={sliderTitleRef}
           data-length={length}
         >
@@ -194,9 +210,13 @@ export default function Generate() {
         />
       </div>
 
-      <div className="settings">
-        <span className="settings__title field-title">settings</span>
-        <div className="setting">
+      <div className={styles.settings}>
+        <span
+          className={`${styles["settings__title"]} ${styles["field-title"]}`}
+        >
+          settings
+        </span>
+        <div className={styles.setting}>
           <input
             type="checkbox"
             id="uppercase"
@@ -206,7 +226,7 @@ export default function Generate() {
           />
           <label htmlFor="uppercase">Include Uppercase</label>
         </div>
-        <div className="setting">
+        <div className={styles.setting}>
           <input
             type="checkbox"
             id="lowercase"
@@ -216,7 +236,7 @@ export default function Generate() {
           />
           <label htmlFor="lowercase">Include Lowercase</label>
         </div>
-        <div className="setting">
+        <div className={styles.setting}>
           <input
             type="checkbox"
             id="number"
@@ -226,7 +246,7 @@ export default function Generate() {
           />
           <label htmlFor="number">Include Numbers</label>
         </div>
-        <div className="setting">
+        <div className={styles.setting}>
           <input
             type="checkbox"
             id="symbol"
@@ -238,7 +258,11 @@ export default function Generate() {
         </div>
       </div>
 
-      <button className="btn generate" id="generate" onClick={generatePassword}>
+      <button
+        className={`${styles.btn} ${styles.generate}`}
+        id="generate"
+        onClick={generatePassword}
+      >
         Generate Password
       </button>
     </div>

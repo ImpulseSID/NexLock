@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoginSignup.css";
+import styles from "./LoginSignup.module.css";
 import { MdEmail, MdLock, MdPerson } from "react-icons/md";
 import { FaKey, FaArrowRight, FaArrowUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -13,63 +13,78 @@ function LoginSignup() {
   };
 
   return (
-    <div className="section">
-      <div className="container">
-        <div className="row full-height justify-content-center">
-          <div className="col-12 text-center align-self-center py-5">
-            <div className="section pb-5 pt-5 pt-sm-2 text-center">
-              <h6 className="mb-0 pb-3">
-                <span className="sliding-link">Log In</span>
-                <span className="switch-arrow">
+    <div className={styles.section}>
+      <div className={styles.container}>
+        <div
+          className={`${styles.row} ${styles["full-height"]} ${styles["justify-content-center"]}`}
+        >
+          <div
+            className={`${styles["col-12"]} ${styles["text-center"]} ${styles["align-self-center"]} ${styles["py-5"]}`}
+          >
+            <div
+              className={`${styles.sectionInner} ${styles["pb-5"]} ${styles["pt-5"]} ${styles["pt-sm-2"]} ${styles["text-center"]}`}
+            >
+              <h6 className={`${styles["mb-0"]} ${styles["pb-3"]}`}>
+                <span className={styles["sliding-link"]}>Log In</span>
+                <span className={styles["switch-arrow"]}>
                   <FaArrowUp />
                 </span>
-                <span className="sliding-link">Sign Up</span>
+                <span className={styles["sliding-link"]}>Sign Up</span>
               </h6>
               <input
-                className="checkbox"
+                className={styles.checkbox}
                 type="checkbox"
                 id="reg-log"
                 name="reg-log"
               />
               <label htmlFor="reg-log"></label>
-              <div className="card-3d-wrap mx-auto">
-                <div className="card-3d-wrapper">
-                  <div className="card-front">
-                    <div className="center-wrap">
-                      <div className="section text-center">
-                        <h4 className="mb-4 pb-3">Log In</h4>
+              <div className={styles["card-3d-wrap"]}>
+                <div className={styles["card-3d-wrapper"]}>
+                  <div className={styles["card-front"]}>
+                    <div className={styles["center-wrap"]}>
+                      <div className={styles["sectionInner"]}>
+                        <h4 className={`${styles["mb-4"]} ${styles["pb-3"]}`}>
+                          Log In
+                        </h4>
                         <form onSubmit={handleSubmit}>
-                          <div className="form-group">
+                          <div className={styles["form-group"]}>
                             <input
                               type="email"
                               name="loginEmail"
-                              className="form-style"
+                              className={styles["form-style"]}
                               placeholder="Your Email"
                               id="loginEmail"
                               autoComplete="email"
                             />
-                            <div className="input-icon">
+                            <div className={styles["input-icon"]}>
                               <MdEmail />
                             </div>
                           </div>
-                          <div className="form-group mt-2">
+                          <div
+                            className={`${styles["form-group"]} ${styles["mt-2"]}`}
+                          >
                             <input
                               type="password"
                               name="loginPassword"
-                              className="form-style"
+                              className={styles["form-style"]}
                               placeholder="Your Password"
                               id="loginPassword"
                               autoComplete="current-password"
                             />
-                            <div className="input-icon">
+                            <div className={styles["input-icon"]}>
                               <MdLock />
                             </div>
                           </div>
-                          <button type="submit" className="btn mt-4">
+                          <button
+                            type="submit"
+                            className={`${styles.btn} ${styles["mt-4"]}`}
+                          >
                             <span>Submit</span>
                           </button>
-                          <p className="mb-0 mt-4 text-center">
-                            <a href="#0" className="link">
+                          <p
+                            className={`${styles["mb-0"]} ${styles["mt-4"]} ${styles["text-center"]}`}
+                          >
+                            <a href="#0" className={styles.link}>
                               Forgot your password?
                             </a>
                           </p>
@@ -77,51 +92,60 @@ function LoginSignup() {
                       </div>
                     </div>
                   </div>
-                  <div className="card-back">
-                    <div className="center-wrap">
-                      <div className="section text-center">
-                        <h4 className="mb-4 pb-3">Sign Up</h4>
+                  <div className={styles["card-back"]}>
+                    <div className={styles["center-wrap"]}>
+                      <div className={styles["sectionInner"]}>
+                        <h4 className={`${styles["mb-4"]} ${styles["pb-3"]}`}>
+                          Sign Up
+                        </h4>
                         <form onSubmit={handleSubmit}>
-                          <div className="form-group">
+                          <div className={styles["form-group"]}>
                             <input
                               type="text"
                               name="signupName"
-                              className="form-style"
+                              className={styles["form-style"]}
                               placeholder="Your Full Name"
                               id="signupName"
                               autoComplete="name"
                             />
-                            <div className="input-icon">
+                            <div className={styles["input-icon"]}>
                               <MdPerson />
                             </div>
                           </div>
-                          <div className="form-group mt-2">
+                          <div
+                            className={`${styles["form-group"]} ${styles["mt-2"]}`}
+                          >
                             <input
                               type="email"
                               name="signupEmail"
-                              className="form-style"
+                              className={styles["form-style"]}
                               placeholder="Your Email"
                               id="signupEmail"
                               autoComplete="email"
                             />
-                            <div className="input-icon">
+                            <div className={styles["input-icon"]}>
                               <MdEmail />
                             </div>
                           </div>
-                          <div className="form-group mt-2">
+                          <div
+                            className={`${styles["form-group"]} ${styles["mt-2"]}`}
+                          >
                             <input
                               type="password"
                               name="signupPassword"
-                              className="form-style"
+                              className={styles["form-style"]}
                               placeholder="Your Password"
                               id="signupPassword"
                               autoComplete="new-password"
                             />
-                            <div className="input-icon">
+                            <div className={styles["input-icon"]}>
                               <FaKey />
                             </div>
                           </div>
-                          <button type="submit" className="btn mt-4">
+                          <button
+                            type="submit"
+                            className={`${styles.btn} ${styles["mt-4"]}`}
+                          >
                             <span>Submit</span>
                           </button>
                         </form>

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Dashboard.css";
+import styles from "./Dashboard.module.css";
 
 export default function Dashboard() {
   useEffect(() => {
@@ -19,39 +19,57 @@ export default function Dashboard() {
   return (
     <div id="wrapper">
       <div id="main">
-        <div className="inner">
-          <div id="container02" className="container default">
-            <div className="wrapper">
-              <div className="inner">
+        <div className={styles.inner}>
+          <div
+            id="container02"
+            className={`${styles.container} ${styles.default}`}
+          >
+            <div className={styles.wrapper}>
+              <div className={styles.inner}>
                 <h1 id="text01">Password Manager</h1>
                 <p id="text02">
                   Generate Passwords, View your Saved Passwords and Save your
                   Passwords Securely
                 </p>
-                <ul id="buttons01" className="buttons">
+                <ul id="buttons01" className={styles.buttons}>
                   <li>
-                    <Link to="/account" className="button n05">
-                      <span className="label">Account</span>
+                    <Link
+                      to="/account"
+                      className={`${styles.button} ${styles.n05}`}
+                    >
+                      <span className={styles.label}>Account</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Generate" className="button n01">
-                      <span className="label">Generate</span>
+                    <Link
+                      to="/Generate"
+                      className={`${styles.button} ${styles.n01}`}
+                    >
+                      <span className={styles.label}>Generate</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/save" className="button n02">
-                      <span className="label">Save</span>
+                    <Link
+                      to="/save"
+                      className={`${styles.button} ${styles.n02}`}
+                    >
+                      <span className={styles.label}>Save</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/view" className="button n03">
-                      <span className="label">View</span>
+                    <Link
+                      to="/view"
+                      className={`${styles.button} ${styles.n03}`}
+                    >
+                      <span className={styles.label}>View</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/logout" className="button n04">
-                      <span className="label">Logout</span>
+                    <Link
+                      to="/logout"
+                      className={`${styles.button} ${styles.n04}`}
+                    >
+                      <span className={styles.label}>Logout</span>
                     </Link>
                   </li>
                 </ul>
