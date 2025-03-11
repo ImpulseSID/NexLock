@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { FaArrowLeft, FaCopy, FaKey } from "react-icons/fa";
+import { MdPassword, MdSettings } from "react-icons/md";
 import styles from "./Generate.module.css";
 
 export default function Generate() {
@@ -151,7 +154,7 @@ export default function Generate() {
     }
   };
 
-  // Determine if a checkbox should be disabled (if it’s the only one checked).
+  // Determine if a checkbox should be disabled (if it's the only one checked).
   const totalChecked = [
     includeUpper,
     includeLower,
@@ -160,111 +163,90 @@ export default function Generate() {
   ].filter(Boolean).length;
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Password Generator</h2>
-      <div
-        className={styles.result}
-        ref={resultContainerRef}
-        onMouseMove={handleMouseMove}
-      >
-        <div className={`${styles["result__title"]} ${styles["field-title"]}`}>
-          Generated Password
-        </div>
-        <div className={`${styles["result__info"]} ${styles.right}`}>
-          click to copy
-        </div>
-        <div className={`${styles["result__info"]} ${styles.left}`}>copied</div>
-        <div className={styles["result__viewbox"]} id="result">
-          {password}
-        </div>
-        <button
-          id="copy-btn"
-          ref={copyBtnRef}
-          style={{ "--x": "0", "--y": "0" }}
-          onClick={handleCopy}
+    <div className={styles.pageWrapper}>
+      <div className={styles.container}>
+        <Link to="/dashboard" className={styles.backButton}>
+          <FaArrowLeft /> Back to Dashboard
+        </Link>
+        
+        <h2 className={styles.title}>
+          <FaKey className={styles.titleIcon} />
+          Password Generator
+        </h2>
+        
+        <div
+          className={styles.result}
+          ref={resultContainerRef}
+          onMouseMove={handleMouseMove}
         >
-          <i className="far fa-copy"></i>
+          <div className={styles.resultTitle}>
+            <MdPassword className={styles.sectionIcon} />
+            Generated Password
+          </div>
+          <div className={`${styles.resultInfo} ${styles.right}`}>
+            click to copy
+          </div>
+          <div className={`${styles.resultInfo} ${styles.left}`}>copied!</div>
+          <div className={styles.resultViewbox}>{password}</div>
+          <button
+            className={styles.copyBtn}
+            ref={copyBtnRef}
+            style={{ "--x": "0", "--y": "0" }}
+            onClick={handleCopy}
+          >
+            <FaCopy />
+          </button>
+        </div>
+
+        <div className={styles.lengthContainer}>
+          <div className={styles.lengthTitle} ref={sliderTitleRef} data-length={length}>
+            Password Length: {length}
+          </div>
+          <input
+            className={styles.slider}
+            ref={sliderRef}
+            type="range"
+            min="4"
+            max="32"
+            value={length}
+            onChange={(e) => setLength(Number(e.target.value))}
+          />
+        </div>
+
+        <div className={styles.settings}>
+          <div className={styles.settingsTitle}>
+            <MdSettings className={styles.sectionIcon} />
+            Password Options
+          </div>
+          <div className={styles.settingsList}>
+            {[
+              { id: "uppercase", label: "Include Uppercase", state: includeUpper, setState: setIncludeUpper },
+              { id: "lowercase", label: "Include Lowercase", state: includeLower, setState: setIncludeLower },
+              { id: "number", label: "Include Numbers", state: includeNumber, setState: setIncludeNumber },
+              { id: "symbol", label: "Include Symbols", state: includeSymbol, setState: setIncludeSymbol },
+            ].map(({ id, label, state, setState }) => (
+              <div key={id} className={styles.setting}>
+                <input
+                  type="checkbox"
+                  id={id}
+                  checked={state}
+                  disabled={totalChecked === 1 && state}
+                  onChange={(e) => setState(e.target.checked)}
+                />
+                <label htmlFor={id}>{label}</label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button
+          className={`${styles.generateBtn} ${generated ? styles.generated : ''}`}
+          onClick={generatePassword}
+        >
+          <FaKey className={styles.btnIcon} />
+          Generate Password
         </button>
       </div>
-
-      <div
-        className={`${styles.length} ${styles["range__slider"]}`}
-        data-min="4"
-        data-max="32"
-      >
-        <div
-          className={`${styles["length__title"]} ${styles["field-title"]}`}
-          ref={sliderTitleRef}
-          data-length={length}
-        >
-          length:
-        </div>
-        <input
-          id="slider"
-          ref={sliderRef}
-          type="range"
-          min="4"
-          max="32"
-          value={length}
-          onChange={(e) => setLength(Number(e.target.value))}
-        />
-      </div>
-
-      <div className={styles.settings}>
-        <span
-          className={`${styles["settings__title"]} ${styles["field-title"]}`}
-        >
-          settings
-        </span>
-        <div className={styles.setting}>
-          <input
-            type="checkbox"
-            id="uppercase"
-            checked={includeUpper}
-            disabled={totalChecked === 1 && includeUpper}
-            onChange={(e) => setIncludeUpper(e.target.checked)}
-          />
-          <label htmlFor="uppercase">Include Uppercase</label>
-        </div>
-        <div className={styles.setting}>
-          <input
-            type="checkbox"
-            id="lowercase"
-            checked={includeLower}
-            disabled={totalChecked === 1 && includeLower}
-            onChange={(e) => setIncludeLower(e.target.checked)}
-          />
-          <label htmlFor="lowercase">Include Lowercase</label>
-        </div>
-        <div className={styles.setting}>
-          <input
-            type="checkbox"
-            id="number"
-            checked={includeNumber}
-            disabled={totalChecked === 1 && includeNumber}
-            onChange={(e) => setIncludeNumber(e.target.checked)}
-          />
-          <label htmlFor="number">Include Numbers</label>
-        </div>
-        <div className={styles.setting}>
-          <input
-            type="checkbox"
-            id="symbol"
-            checked={includeSymbol}
-            disabled={totalChecked === 1 && includeSymbol}
-            onChange={(e) => setIncludeSymbol(e.target.checked)}
-          />
-          <label htmlFor="symbol">Include Symbols</label>
-        </div>
-      </div>
-
-      <button
-        className={`${styles.btn} ${styles.generate}`}
-        id="generate"
-        onClick={generatePassword}
-      >
-        Generate Password
-      </button>
     </div>
   );
 }
