@@ -35,7 +35,7 @@ export default function Dashboard() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/generate" className="button n01">
+                    <Link to="/Generate" className="button n01">
                       <span className="label">Generate</span>
                     </Link>
                   </li>
