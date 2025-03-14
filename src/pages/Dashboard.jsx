@@ -34,7 +34,7 @@ export default function Dashboard() {
                 <ul id="buttons01" className={styles.buttons}>
                   <li>
                     <Link
-                      to="/account"
+                      to="/Account"
                       className={`${styles.button} ${styles.n05}`}
                     >
                       <span className={styles.label}>Account</span>
@@ -50,7 +50,7 @@ export default function Dashboard() {
                   </li>
                   <li>
                     <Link
-                      to="/save"
+                      to="/Save"
                       className={`${styles.button} ${styles.n02}`}
                     >
                       <span className={styles.label}>Save</span>
@@ -58,17 +58,14 @@ export default function Dashboard() {
                   </li>
                   <li>
                     <Link
-                      to="/view"
+                      to="/View"
                       className={`${styles.button} ${styles.n03}`}
                     >
                       <span className={styles.label}>View</span>
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      to="/logout"
-                      className={`${styles.button} ${styles.n04}`}
-                    >
+                    <Link to="/" className={`${styles.button} ${styles.n04}`}>
                       <span className={styles.label}>Logout</span>
                     </Link>
                   </li>

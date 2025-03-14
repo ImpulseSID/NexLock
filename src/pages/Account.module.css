@@ -1,0 +1,210 @@
+.container {
+  min-height: 100vh;
+  background-color: #111111;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333333;
+}
+
+.backButton,
+.logoutButton {
+  background-color: #333333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.backButton:hover,
+.logoutButton:hover {
+  background-color: #444444;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.accountContainer {
+  width: 100%;
+  max-width: 500px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 2rem 0 1rem;
+  color: #bbbbbb;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #222222;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: #bbbbbb;
+}
+
+.valueContainer {
+  background-color: #333333;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.value {
+  font-size: 1rem;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #222222;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.passwordInputContainer {
+  display: flex;
+  position: relative;
+}
+
+.passwordInput {
+  background-color: #333333;
+  border: 1px solid #444444;
+  border-radius: 6px;
+  padding: 0.75rem;
+  padding-right: 3rem;
+  color: white;
+  width: 100%;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.passwordInput:focus {
+  outline: none;
+  border-color: #666666;
+}
+
+.iconButton {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #999999;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.iconButton:hover {
+  color: white;
+}
+
+.saveButton {
+  background-color: #333333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+  margin-top: 0.5rem;
+}
+
+.saveButton:hover {
+  background-color: #444444;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .main {
+    padding: 1.5rem 1rem;
+  }
+
+  .backButton,
+  .logoutButton {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    margin: 1.5rem 0 1rem;
+  }
+}
