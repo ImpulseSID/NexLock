@@ -1,0 +1,60 @@
+.container {
+  padding: 2rem;
+  background-color: #111111;
+  color: white;
+  min-height: 100vh;
+}
+
+/* New header styles */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.backButton {
+  background-color: #333333;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.backButton:hover {
+  background-color: #444444;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.loading,
+.error {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.passwordTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.passwordTable th,
+.passwordTable td {
+  border: 1px solid #333333;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.passwordTable th {
+  background-color: #222222;
+}
+
+.passwordTable tr:nth-child(even) {
+  background-color: #1a1a1a;
+}

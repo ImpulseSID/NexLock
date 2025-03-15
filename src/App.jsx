@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Generate from "./pages/Generate";
 import Save from "./pages/Save";
 import Account from "./pages/Account";
+import View from "./pages/View";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/Generate" element={<Generate />} />
         <Route path="/Save" element={<Save />} />
         <Route path="/Account" element={<Account />} />
+        <Route path="/View" element={<View />} />
       </Routes>
     </BrowserRouter>
   );
