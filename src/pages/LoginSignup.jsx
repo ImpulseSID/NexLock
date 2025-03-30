@@ -1,15 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./LoginSignup.module.css";
 import { MdEmail, MdLock, MdPerson } from "react-icons/md";
 import { FaKey, FaArrowRight, FaArrowUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { app } from "../firebase";
+import { db } from "../firebase";
+import { Link } from "react-router-dom";
 
 function LoginSignup() {
   const navigate = useNavigate();
+  const auth = getAuth(app);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/Dashboard");
+    const form = e.target;
+
+    if (form.querySelector('[name="signupEmail"]')) {
+      // Sign Up Form
+      const name = form.signupName.value;
+      const email = form.signupEmail.value;
+      const password = form.signupPassword.value;
+
+      try {
+        console.log("Attempting to sign up...");
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
+
+        if (user) {
+          console.log("User signed up, adding to Firestore...");
+          await setDoc(doc(db, "users", user.uid), {
+            fullName: name,
+            email: email,
+            uid: user.uid,
+            createdAt: new Date(),
+          });
+          console.log("User added to Firestore.");
+          navigate("/Dashboard");
+        }
+      } catch (error) {
+        console.error("Signup error:", error.code, error.message);
+      }
+    } else if (form.querySelector('[name="loginEmail"]')) {
+      // Log In Form
+      const email = form.loginEmail.value;
+      const password = form.loginPassword.value;
+
+      try {
+        console.log("Attempting to log in...");
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        console.log("User logged in:", userCredential.user);
+        navigate("/Dashboard");
+      } catch (error) {
+        console.error("Login error:", error.code, error.message);
+      }
+    }
   };
 
   return (
@@ -84,9 +142,9 @@ function LoginSignup() {
                           <p
                             className={`${styles["mb-0"]} ${styles["mt-4"]} ${styles["text-center"]}`}
                           >
-                            <a href="#0" className={styles.link}>
+                            <Link to="/ForgotPassword" className={styles.link}>
                               Forgot your password?
-                            </a>
+                            </Link>
                           </p>
                         </form>
                       </div>

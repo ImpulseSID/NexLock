@@ -1,11 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-const admin = require("firebase-admin");
+import express from "express";
+import cors from "cors";
+import admin from "firebase-admin";
+import dotenv from "dotenv";
+import serviceAccount from "./serviceAccount.js";
+
+dotenv.config();
 const app = express();
 const port = 3001;
-
-// Initialize Firebase Admin SDK with your service account
-const serviceAccount = require("../../serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

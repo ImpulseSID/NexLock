@@ -6,6 +6,7 @@ import Generate from "./pages/Generate";
 import Save from "./pages/Save";
 import Account from "./pages/Account";
 import View from "./pages/View";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/Save" element={<Save />} />
         <Route path="/Account" element={<Account />} />
         <Route path="/View" element={<View />} />
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
       </Routes>
     </BrowserRouter>
   );

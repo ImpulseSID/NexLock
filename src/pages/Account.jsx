@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Eye, EyeOff, Save } from "lucide-react";
+import { getAuth, updatePassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import styles from "./Account.module.css";
 
 const Account = () => {
   const navigate = useNavigate();
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const [userData, setUserData] = useState({
+    fullName: "",
+    email: user?.email || "",
+  });
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -12,25 +23,40 @@ const Account = () => {
     confirmPassword: "",
   });
 
-  // Mock user data - in a real app, this would come from authentication
-  const user = {
-    fullName: "John Doe",
-    email: "john.doe@example.com",
-  };
+  useEffect(() => {
+    if (user) {
+      const fetchUserData = async () => {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          setUserData((prev) => ({
+            ...prev,
+            fullName: userDoc.data().fullName,
+          }));
+        }
+      };
+      fetchUserData();
+    }
+  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       console.error("Passwords do not match");
       return;
     }
-    console.log("Updating password:", formData.password);
-    // Here you would update the password
+    if (user) {
+      try {
+        await updatePassword(user, formData.password);
+        console.log("Password updated successfully");
+      } catch (error) {
+        console.error("Error updating password:", error.message);
+      }
+    }
   };
 
   return (
@@ -57,7 +83,9 @@ const Account = () => {
             <div className={styles.infoGroup}>
               <label className={styles.label}>Full Name</label>
               <div className={styles.valueContainer}>
-                <div className={styles.value}>{user.fullName}</div>
+                <div className={styles.value}>
+                  {userData.fullName || "Loading..."}
+                </div>
               </div>
             </div>
 

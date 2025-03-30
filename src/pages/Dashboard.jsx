@@ -1,8 +1,12 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
+import { getAuth, signOut } from "firebase/auth";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+  const auth = getAuth();
+
   useEffect(() => {
     document.body.classList.add("is-loading");
 
@@ -15,6 +19,15 @@ export default function Dashboard() {
       document.body.classList.remove("is-loading", "is-ready");
     };
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/"); // Redirect to home page after logout
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
 
   return (
     <div id="wrapper">
@@ -65,7 +78,11 @@ export default function Dashboard() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" className={`${styles.button} ${styles.n04}`}>
+                    <Link
+                      to="/"
+                      className={`${styles.button} ${styles.n04}`}
+                      onClick={handleLogout}
+                    >
                       <span className={styles.label}>Logout</span>
                     </Link>
                   </li>

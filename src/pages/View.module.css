@@ -3,25 +3,34 @@
   background-color: #111111;
   color: white;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* New header styles */
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 2rem;
 }
 
-.backButton {
+.backButton,
+.logoutButton {
   background-color: #333333;
   color: white;
   padding: 0.5rem 1rem;
-  text-decoration: none;
+  border: none;
   border-radius: 4px;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.backButton:hover {
+.backButton:hover,
+.logoutButton:hover {
   background-color: #444444;
 }
 
@@ -31,30 +40,95 @@
   font-size: 2rem;
 }
 
-.loading,
-.error {
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 1.2rem;
-}
-
-.passwordTable {
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  border-collapse: collapse;
-  margin: 0 auto;
 }
 
-.passwordTable th,
-.passwordTable td {
-  border: 1px solid #333333;
-  padding: 0.75rem;
-  text-align: left;
+/* Center the grid */
+.cardGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 800px;
 }
 
-.passwordTable th {
-  background-color: #222222;
-}
-
-.passwordTable tr:nth-child(even) {
+/* Make cards horizontally longer and centered */
+.card {
   background-color: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Header area for website name */
+.cardHeader {
+  border-bottom: 1px solid #333333;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Body content */
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Each field (username, password, note) */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Labels */
+.label {
+  font-weight: bold;
+}
+
+/* Username/Password text */
+.text {
+  flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* React Buttons */
+.reactButton {
+  background-color: #333333;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.reactButton:hover {
+  background-color: #444444;
+}
+
+/* Copied text */
+.copiedText {
+  font-size: 0.8rem;
+  color: #00ff00;
+  margin-left: 0.5rem;
 }

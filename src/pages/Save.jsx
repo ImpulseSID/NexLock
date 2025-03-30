@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Eye, EyeOff, Copy } from "lucide-react";
 import styles from "./Save.module.css";
+import { getAuth } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { app } from "../firebase";
 
 const Save = () => {
   const navigate = useNavigate();
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     website: "",
@@ -18,10 +24,28 @@ const Save = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Saving password:", formData);
-    navigate("/");
+
+    const user = auth.currentUser;
+    if (!user) {
+      console.error("No user logged in.");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, `users/${user.uid}/passwords`), {
+        website: formData.website,
+        username: formData.username,
+        password: formData.password,
+        note: formData.note,
+        createdAt: new Date(),
+      });
+      console.log("Password saved successfully!");
+      navigate("/Dashboard");
+    } catch (error) {
+      console.error("Error saving password:", error);
+    }
   };
 
   const handlePaste = async () => {
