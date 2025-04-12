@@ -39,7 +39,7 @@ export default function Dashboard() {
           >
             <div className={styles.wrapper}>
               <div className={styles.inner}>
-                <h1 id="text01">Pashub</h1>
+                <h1 id="text01">NexLock</h1>
                 <p id="text02">
                   Generate Passwords, View your Saved Passwords and Save your
                   Passwords Securely
