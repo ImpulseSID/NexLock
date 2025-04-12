@@ -4,10 +4,97 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NexLock</title>
+    <meta name="description" content="NexLock - Secure Password Manager with end-to-end encryption" />
+    <meta name="theme-color" content="#1a1a1a" />
+    <meta name="keywords" content="password manager, security, encryption, nexlock" />
+    <meta property="og:title" content="NexLock - Secure Password Manager" />
+    <meta property="og:description" content="Manage your passwords securely with NexLock" />
+    <meta property="og:image" content="/favicon.png" />
+    <title>NexLock - Secure Password Manager</title>
+    <style>
+      body {
+        margin: 0;
+        background: #1a1a1a;
+        color: #00ff00;
+        font-family: 'Courier New', monospace;
+      }
+      #root {
+        min-height: 100vh;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Mr. Robot Easter Egg
+      console.log(`
+        %c
+        ███████╗███████╗ ██████╗██╗  ██╗██╗   ██╗██╗████████╗██╗   ██╗
+        ██╔════╝██╔════╝██╔════╝██║  ██║╚██╗ ██╔╝██║╚══██╔══╝╚██╗ ██╔╝
+        █████╗  █████╗  ██║     ███████║ ╚████╔╝ ██║   ██║    ╚████╔╝ 
+        ██╔══╝  ██╔══╝  ██║     ██╔══██║  ╚██╔╝  ██║   ██║     ╚██╔╝  
+        ███████╗██║     ╚██████╗██║  ██║   ██║   ██║   ██║      ██║   
+        ╚══════╝╚═╝      ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝   ╚═╝      ╚═╝   
+        
+        %cHello, friend. Hello, friend? That's lame. Maybe I should give you a name.
+        But that's a slippery slope. You're only in my head. We have to remember that.
+        
+        %cWelcome to NexLock - Your secure password manager.
+        %cRemember: 1.0.8.7. - The world is a dangerous place, not because of those who do evil, 
+        but because of those who look on and do nothing.
+        
+        %cType 'help' for a list of commands.
+      `, 
+      'color: #00ff00; font-family: monospace;',
+      'color: #00ff00; font-style: italic;',
+      'color: #00ff00; font-weight: bold;',
+      'color: #00ff00;',
+      'color: #00ff00;'
+      );
+
+      // Add some interactive console commands
+      window.help = function() {
+        console.log(`
+          %cAvailable Commands:
+          %c- help: Show this help message
+          %c- fsociety: Show the fsociety logo
+          %c- whoami: Show information about the current user
+          %c- clear: Clear the console
+        `, 
+        'color: #00ff00; font-weight: bold;',
+        'color: #00ff00;',
+        'color: #00ff00;',
+        'color: #00ff00;',
+        'color: #00ff00;'
+        );
+      };
+
+      window.fsociety = function() {
+        console.log(`
+          %c
+          ███████╗███████╗ ██████╗██╗  ██╗██╗   ██╗██╗████████╗██╗   ██╗
+          ██╔════╝██╔════╝██╔════╝██║  ██║╚██╗ ██╔╝██║╚══██╔══╝╚██╗ ██╔╝
+          █████╗  █████╗  ██║     ███████║ ╚████╔╝ ██║   ██║    ╚████╔╝ 
+          ██╔══╝  ██╔══╝  ██║     ██╔══██║  ╚██╔╝  ██║   ██║     ╚██╔╝  
+          ███████╗██║     ╚██████╗██║  ██║   ██║   ██║   ██║      ██║   
+          ╚══════╝╚═╝      ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝   ╚═╝      ╚═╝   
+        `, 'color: #00ff00; font-family: monospace;');
+      };
+
+      window.whoami = function() {
+        console.log(`
+          %cCurrent User: Anonymous
+          %cLocation: Unknown
+          %cStatus: Connected
+          %cAccess Level: Secure
+        `,
+        'color: #00ff00;',
+        'color: #00ff00;',
+        'color: #00ff00;',
+        'color: #00ff00;'
+        );
+      };
+    </script>
   </body>
 </html>
