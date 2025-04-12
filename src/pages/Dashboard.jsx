@@ -2,6 +2,14 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
 import { getAuth, signOut } from "firebase/auth";
+import { 
+  FaUserCircle, 
+  FaKey, 
+  FaSave, 
+  FaEye, 
+  FaSignOutAlt 
+} from "react-icons/fa";
+import { initializeTorchEffect } from "../utils/torchEffect";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -15,8 +23,12 @@ export default function Dashboard() {
       document.body.classList.add("is-ready");
     }, 100);
 
+    // Initialize torch effect
+    const cleanup = initializeTorchEffect();
+
     return () => {
       document.body.classList.remove("is-loading", "is-ready");
+      cleanup();
     };
   }, []);
 
@@ -50,6 +62,7 @@ export default function Dashboard() {
                       to="/Account"
                       className={`${styles.button} ${styles.n05}`}
                     >
+                      <FaUserCircle className={styles.icon} />
                       <span className={styles.label}>Account</span>
                     </Link>
                   </li>
@@ -58,6 +71,7 @@ export default function Dashboard() {
                       to="/Generate"
                       className={`${styles.button} ${styles.n01}`}
                     >
+                      <FaKey className={styles.icon} />
                       <span className={styles.label}>Generate</span>
                     </Link>
                   </li>
@@ -66,6 +80,7 @@ export default function Dashboard() {
                       to="/Save"
                       className={`${styles.button} ${styles.n02}`}
                     >
+                      <FaSave className={styles.icon} />
                       <span className={styles.label}>Save</span>
                     </Link>
                   </li>
@@ -74,6 +89,7 @@ export default function Dashboard() {
                       to="/View"
                       className={`${styles.button} ${styles.n03}`}
                     >
+                      <FaEye className={styles.icon} />
                       <span className={styles.label}>View</span>
                     </Link>
                   </li>
@@ -83,6 +99,7 @@ export default function Dashboard() {
                       className={`${styles.button} ${styles.n04}`}
                       onClick={handleLogout}
                     >
+                      <FaSignOutAlt className={styles.icon} />
                       <span className={styles.label}>Logout</span>
                     </Link>
                   </li>

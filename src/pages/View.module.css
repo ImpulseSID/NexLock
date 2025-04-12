@@ -1,12 +1,29 @@
 .container {
   padding: 2rem;
-  background-color: #111111;
+  background-color: #000000;
   color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(0, 0, 0, 0.95) 50%,
+    rgba(0, 0, 0, 1) 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .header {
@@ -16,28 +33,33 @@
   width: 100%;
   max-width: 800px;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .backButton,
 .logoutButton {
-  background-color: #333333;
+  background-color: rgba(255, 255, 255, 0.1);
   color: white;
   padding: 0.5rem 1rem;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  backdrop-filter: blur(5px);
 }
 
 .backButton:hover,
 .logoutButton:hover {
-  background-color: #444444;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .title {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .main {
@@ -45,6 +67,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 /* Center the grid */
@@ -59,8 +83,8 @@
 
 /* Make cards horizontally longer and centered */
 .card {
-  background-color: #1a1a1a;
-  border: 1px solid #333333;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -69,18 +93,23 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 /* Header area for website name */
 .cardHeader {
-  border-bottom: 1px solid #333333;
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.25rem;
-  font-size: 1rem;
-  font-weight: bold;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Body content */
@@ -100,6 +129,7 @@
 /* Labels */
 .label {
   font-weight: bold;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Username/Password text */
@@ -108,22 +138,25 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* React Buttons */
 .reactButton {
-  background-color: #333333;
+  background-color: rgba(255, 255, 255, 0.1);
   color: white;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0.3rem 0.6rem;
   border-radius: 4px;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  backdrop-filter: blur(5px);
 }
 
 .reactButton:hover {
-  background-color: #444444;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Copied text */
@@ -131,4 +164,109 @@
   font-size: 0.8rem;
   color: #00ff00;
   margin-left: 0.5rem;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.eyeButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+  position: relative;
+}
+
+.eyeButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%);
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.eyeButton.showing::after {
+  width: 200px;
+  height: 2px;
+  opacity: 1;
+}
+
+.eyeIcon {
+  color: #ffffff;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.eyeButton:hover .eyeIcon {
+  color: #00ff00;
+  transform: scale(1.1);
+}
+
+/* Add glow effect to password text when visible */
+.text.visible {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: text-shadow 0.3s ease;
+}
+
+/* Add beam effect to the password field when visible */
+.field.visible {
+  position: relative;
+}
+
+.field.visible::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.field.visible.showing::before {
+  opacity: 1;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  color: #ff4444;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.deleteButton:hover {
+  color: #ff0000;
+  transform: scale(1.1);
 }
